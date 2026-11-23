@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090909">
+    <title>GLAMORA | Book an Appointment</title>
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+<body data-page="booking">
+    <header class="site-header">
+        <a class="brand" href="../index.html">GLAMORA<span>.</span></a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="services.html" data-page-link="services">Services</a>
+            <a href="booking.html" data-page-link="booking">Book</a>
+            <a href="virtual-studio.html" data-page-link="virtual-studio">Studio</a>
+            <a href="appointments.html" data-page-link="appointments">Appointments</a>
+            <a href="dashboard.html" data-page-link="dashboard">My account</a>
+        </nav>
+        <div class="header-actions" data-header-actions></div>
+    </header>
+    <div class="demo-banner">DEMO BOOKING · This preview saves appointments in this browser only. It does not contact a salon or reserve a real slot.</div>
+    <main class="page-wrap">
+        <header class="page-intro">
+            <p class="eyebrow">YOUR TIME, YOUR STYLE</p>
+            <h1>Make a little time <span class="accent">for you.</span></h1>
+            <p>Choose your service, preferred stylist, and a time that works. Your demo appointment will appear in your account.</p>
+        </header>
+        <div class="form-layout">
+            <section class="card form-card">
+                <h2>Appointment details</h2>
+                <form id="bookingForm">
+                    <div class="field-grid">
+                        <div class="field field-full">
+                            <label for="bookingService">Service</label>
+                            <select id="bookingService" required></select>
+                        </div>
+                        <div class="field">
+                            <label for="bookingDate">Date</label>
+                            <input type="date" id="bookingDate" required>
+                        </div>
+                        <div class="field">
+                            <label for="bookingTime">Available time</label>
+                            <select id="bookingTime" required></select>
+                        </div>
+                        <div class="field field-full">
+                            <label for="bookingStylist">Preferred stylist</label>
+                            <select id="bookingStylist" required></select>
+                        </div>
+                        <div class="field field-full">
+                            <label for="bookingNotes">Anything you'd like us to know? <span class="field-hint">Optional</span></label>
+                            <textarea id="bookingNotes" maxlength="300" placeholder="Tell us about your preferred look or any requests."></textarea>
+                        </div>
+                    </div>
+                    <p class="form-message" id="bookingMessage" role="status" aria-live="polite"></p>
+                    <button class="button" type="submit">Confirm demo booking ↗</button>
+                </form>
+            </section>
+            <aside class="card summary-card" aria-label="Booking summary">
+                <p class="eyebrow">YOUR VISIT</p>
+                <h2>Booking summary</h2>
+                <div class="summary-line"><span>Service</span><strong id="summaryService">Not selected</strong></div>
+                <div class="summary-line"><span>Duration</span><strong id="summaryDuration">—</strong></div>
+                <div class="summary-line"><span>Stylist</span><strong id="summaryStylist">First available stylist</strong></div>
+                <div class="summary-line summary-total"><span>Sample price</span><strong id="summaryPrice">—</strong></div>
+                <p class="notice">This is a local demo. The sample times and prices are not live availability and no real booking is made.</p>
+            </aside>
+        </div>
+    </main>
+    <footer class="site-footer">GLAMORA · GOOD STYLE STARTS WITH YOU</footer>
+    <script src="../js/app.js"></script>
+</body>
+</html>

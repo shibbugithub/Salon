@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090909">
+    <title>GLAMORA | Virtual Style Studio</title>
+    <link rel="stylesheet" href="../css/app.css">
+</head>
+<body data-page="virtual-studio">
+    <header class="site-header">
+        <a class="brand" href="../index.html">GLAMORA<span>.</span></a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="../index.html">Home</a>
+            <a href="services.html" data-page-link="services">Services</a>
+            <a href="booking.html" data-page-link="booking">Book</a>
+            <a href="virtual-studio.html" data-page-link="virtual-studio">Studio</a>
+            <a href="appointments.html" data-page-link="appointments">Appointments</a>
+            <a href="dashboard.html" data-page-link="dashboard">My account</a>
+        </nav>
+        <div class="header-actions" data-header-actions></div>
+    </header>
+    <div class="demo-banner">STYLE STUDIO PREVIEW · Camera access is optional and stays in this browser. This prototype does not apply AI hairstyle overlays or upload images.</div>
+    <main class="page-wrap">
+        <header class="page-intro">
+            <p class="eyebrow">YOUR VIRTUAL STYLE STUDIO</p>
+            <h1>Find a look that feels <span class="accent">like you.</span></h1>
+            <p>Browse a few style directions, try the optional live camera mirror, capture a photo, and choose a service to continue to a demo booking.</p>
+        </header>
+        <div class="studio-layout">
+            <section class="card studio-camera">
+                <div class="camera-stage">
+                    <video id="cameraVideo" autoplay muted playsinline aria-label="Live camera preview"></video>
+                    <canvas id="cameraFaceCanvas" class="camera-face-canvas" aria-hidden="true"></canvas>
+                    <div class="camera-look-overlay" id="cameraLookOverlay" aria-hidden="true">
+                        <span id="cameraLookLabel">Classic</span>
+                    </div>
+                    <div class="snap-effect-tray" aria-label="Live camera effects">
+                        <div class="effect-group">
+                            <span>Camera filter</span>
+                            <div>
+                                <button class="effect-button selected" type="button" data-filter-effect="natural" aria-pressed="true">Natural</button>
+                                <button class="effect-button" type="button" data-filter-effect="golden" aria-pressed="false">Golden</button>
+                                <button class="effect-button" type="button" data-filter-effect="glam" aria-pressed="false">Glam</button>
+                                <button class="effect-button" type="button" data-filter-effect="noir" aria-pressed="false">Noir</button>
+                            </div>
+                        </div>
+                        <div class="effect-group">
+                            <span>Hair color</span>
+                            <div>
+                                <button class="effect-button" type="button" data-hair-effect="none" aria-pressed="true">None</button>
+                                <button class="effect-button hair-black" type="button" data-hair-effect="black" aria-pressed="false">Black</button>
+                                <button class="effect-button hair-brown" type="button" data-hair-effect="brown" aria-pressed="false">Brown</button>
+                                <button class="effect-button hair-blonde" type="button" data-hair-effect="blonde" aria-pressed="false">Blonde</button>
+                                <button class="effect-button hair-pink" type="button" data-hair-effect="pink" aria-pressed="false">Pink</button>
+                            </div>
+                        </div>
+                        <div class="effect-group">
+                            <span>Beard style</span>
+                            <div>
+                                <button class="effect-button selected" type="button" data-beard-effect="none" aria-pressed="true">Clean</button>
+                                <button class="effect-button" type="button" data-beard-effect="stubble" aria-pressed="false">Stubble</button>
+                                <button class="effect-button" type="button" data-beard-effect="short" aria-pressed="false">Short</button>
+                                <button class="effect-button" type="button" data-beard-effect="full" aria-pressed="false">Full</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="camera-placeholder" id="cameraPlaceholder">
+                        <span aria-hidden="true">✦</span>
+                        <p>Your camera preview will appear here.</p>
+                    </div>
+                </div>
+                <div class="camera-controls">
+                    <button class="button" type="button" id="startCamera">Start camera</button>
+                    <button class="button-secondary" type="button" id="captureCamera" disabled>Capture photo</button>
+                    <button class="button-secondary" type="button" id="switchCamera" disabled>Switch camera</button>
+                    <button class="button-secondary" type="button" id="stopCamera" disabled>Turn camera off</button>
+                </div>
+                <p class="form-message" id="cameraMessage" role="status" aria-live="polite"></p>
+                <canvas id="captureCanvas" hidden></canvas>
+                <div class="camera-capture" id="cameraCapture" hidden>
+                    <img id="capturePreview" alt="Captured GLAMORA style preview">
+                    <div class="capture-actions">
+                        <a class="button" id="downloadCapture" download="glamora-look.png">Download photo ↗</a>
+                        <button class="button-secondary" type="button" id="discardCapture">Discard</button>
+                    </div>
+                </div>
+            </section>
+            <section class="card studio-recommendation" aria-live="polite">
+                <p class="eyebrow">STYLE DIRECTION</p>
+                <h2 id="lookName">The considered classic</h2>
+                <p id="lookDescription">A clean, versatile shape with a neat finish—easy to make your own.</p>
+                <div class="summary-line"><span>Suggested service</span><strong id="lookService">Signature Haircut</strong></div>
+                <a class="button" id="bookLook" href="booking.html?service=haircut">Explore this service ↗</a>
+            </section>
+        </div>
+        <section class="look-section">
+            <div class="section-heading">
+                <h2>Choose a style</h2>
+                <span class="field-hint" id="styleCount">12 styles available</span>
+            </div>
+            <div class="style-filters" role="group" aria-label="Filter styles">
+                <button class="style-filter selected" type="button" data-filter="all" aria-pressed="true">All styles</button>
+                <button class="style-filter" type="button" data-filter="short" aria-pressed="false">Short</button>
+                <button class="style-filter" type="button" data-filter="medium" aria-pressed="false">Medium</button>
+                <button class="style-filter" type="button" data-filter="long" aria-pressed="false">Long</button>
+                <button class="style-filter" type="button" data-filter="color" aria-pressed="false">Color</button>
+                <button class="style-filter" type="button" data-filter="beard" aria-pressed="false">Beard</button>
+            </div>
+            <label class="style-search">
+                <span>Search styles</span>
+                <input id="styleSearch" type="search" placeholder="Try bob, fade, curls, or pixie">
+            </label>
+            <div class="look-grid" id="lookGrid"></div>
+        </section>
+    </main>
+    <footer class="site-footer">GLAMORA · GOOD STYLE STARTS WITH YOU</footer>
+    <script src="../js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+    <script src="../js/studio.js"></script>
+</body>
+</html>

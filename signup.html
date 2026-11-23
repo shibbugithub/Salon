@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#090909">
+    <title>GLAMORA | Create your account</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-background"></div>
+    <header class="auth-nav">
+        <a href="index.html" class="logo">GLAMORA<span>.</span></a>
+        <a href="index.html" class="back-home">← Back to Home</a>
+    </header>
+    <main class="auth-container">
+        <div class="auth-visual">
+            <p class="gold-label">A MORE PERSONAL SALON EXPERIENCE</p>
+            <h1>MAKE IT<br><span>YOUR MOMENT.</span></h1>
+            <p>Create an account to book your next appointment and keep your salon plans in one place.</p>
+            <div class="visual-circle">✦</div>
+        </div>
+        <section class="auth-card signup-card">
+            <div class="auth-heading">
+                <p class="gold-label">JOIN GLAMORA</p>
+                <h2>Create your <span>account.</span></h2>
+                <p>It only takes a moment to get started.</p>
+            </div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" required maxlength="80">
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email address</label>
+                    <input type="email" id="signupEmail" name="email" autocomplete="email" placeholder="you@example.com" required maxlength="254">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric" placeholder="10-digit phone number" pattern="[0-9]{10}" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password <span class="field-hint">At least 8 characters</span></label>
+                    <div class="password-box">
+                        <input type="password" id="signupPassword" name="password" autocomplete="new-password" placeholder="Create a password" minlength="8" required>
+                        <button type="button" id="toggleSignupPassword" aria-label="Show password">SHOW</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" placeholder="Enter your password again" required>
+                </div>
+                <p class="message" id="signupMessage" role="status" aria-live="polite"></p>
+                <p class="demo-notice">Prototype account: details stay in this browser and are not connected to a secure server.</p>
+                <button type="submit" class="auth-button">CREATE ACCOUNT ↗</button>
+            </form>
+            <div class="auth-switch">Already have an account? <a href="login.html">Sign in</a></div>
+        </section>
+    </main>
+    <script src="js/auth.js"></script>
+</body>
+</html>
